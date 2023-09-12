@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/home/home_header_widget.dart';
+import '../widgets/home/home_profile_name_widget.dart';
 
 class HomeScreenView extends StatelessWidget {
   const HomeScreenView({super.key});
@@ -15,10 +16,12 @@ class HomeScreenView extends StatelessWidget {
           child: Column(
             children: const <Widget>[
               HomeHeaderWidget(),
+              SizedBox(height: 10),
+              HomeProfileNameWidget(),
             ],
           ),
         ),
       ),
     );
-  }
+  }  
 }
