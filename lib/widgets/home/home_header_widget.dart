@@ -13,7 +13,6 @@ class HomeHeaderWidget extends StatelessWidget {
           "Edit",
           style: TextStyle(
             fontSize: 12,
-            color: Colors.white,
             decoration: TextDecoration.underline,
           ),
         ),

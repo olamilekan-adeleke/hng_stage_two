@@ -46,7 +46,6 @@ class HomeProfileNameWidget extends StatelessWidget {
             buildInfoWidget("Github handle", "Olamilekan-adeleke"),
           ],
         ),
-        SizerHelper.verticalSpace(),
       ],
     );
   }
