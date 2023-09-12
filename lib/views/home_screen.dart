@@ -4,6 +4,7 @@ import '../shared/sizer_helper.dart';
 import '../widgets/home/home_about_widget.dart';
 import '../widgets/home/home_header_widget.dart';
 import '../widgets/home/home_profile_name_widget.dart';
+import 'update_profile_view.dart';
 
 class HomeScreenView extends StatelessWidget {
   const HomeScreenView({super.key});
@@ -24,7 +25,11 @@ class HomeScreenView extends StatelessWidget {
               const HomeAboutWidget(),
               const Spacer(),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const UpdateProfileView(),
+                  ));
+                },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.black87,
                   elevation: 0,
