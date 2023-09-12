@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../shared/sizer_helper.dart';
+import '../widgets/home/home_about_widget.dart';
 import '../widgets/home/home_header_widget.dart';
 import '../widgets/home/home_profile_name_widget.dart';
 
@@ -9,19 +11,22 @@ class HomeScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: const Color(0xffCEDEBD),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 5),
           child: Column(
-            children: const <Widget>[
-              HomeHeaderWidget(),
-              SizedBox(height: 10),
-              HomeProfileNameWidget(),
+            children: <Widget>[
+              const HomeHeaderWidget(),
+              SizerHelper.verticalSpace(),
+              const HomeProfileNameWidget(),
+              SizerHelper.verticalSpace(),
+              const HomeAboutWidget(),
+              const Spacer(),
             ],
           ),
         ),
       ),
     );
-  }  
+  }
 }
