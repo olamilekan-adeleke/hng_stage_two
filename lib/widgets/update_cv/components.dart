@@ -4,13 +4,17 @@ import 'package:hng_stage_two/shared/sizer_helper.dart';
 class CustomTextField extends StatelessWidget {
   final String title;
   final String hintText;
-  final String? Function(String)? validator;
+  final String? Function(String?)? validator;
+  final TextEditingController? controller;
+  final int? maxLine;
 
   const CustomTextField({
     super.key,
     required this.title,
     required this.hintText,
     this.validator,
+    this.controller,
+    this.maxLine,
   });
 
   @override
@@ -20,15 +24,22 @@ class CustomTextField extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(fontSize: 16, color: Colors.black54),
+          style: const TextStyle(
+            fontSize: 14,
+            color: Colors.black87,
+            fontWeight: FontWeight.w500,
+          ),
         ),
         SizerHelper.verticalSpace(5),
         TextFormField(
+          maxLines: maxLine,
+          controller: controller,
           style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w600,
             fontSize: 13,
           ),
+          validator: validator,
           autovalidateMode:
               validator != null ? AutovalidateMode.onUserInteraction : null,
           decoration: InputDecoration(

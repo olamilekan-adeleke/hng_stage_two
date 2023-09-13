@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:hng_stage_two/controller/app_state.dart';
 
+import '../../controller/user_details_model.dart';
 import '../../shared/sizer_helper.dart';
 
 class HomeAboutWidget extends StatelessWidget {
-  const HomeAboutWidget({super.key});
+  final AppState appState;
+  const HomeAboutWidget(this.appState, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        buildInfoWidget(
-          "About",
-          "I am a highly experienced Flutter developer with few years of professional experience in the field.  I am also well-versed in various state management techniques in Flutter such as GetX, BLoC, Provider, and Riverpod, and have experience working with external APIs and SDKs",
+        StreamBuilder<UserDetailsModel>(
+          stream: appState.dataStream,
+          builder: (context, snapshot) {
+            final UserDetailsModel? data = snapshot.data;
+
+            return buildInfoWidget("About", data?.about ?? "");
+          },
         ),
       ],
     );
@@ -43,20 +50,4 @@ class HomeAboutWidget extends StatelessWidget {
       ],
     );
   }
-
-  // Widget buildInfoWidget(String title, String value) {
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: <Widget>[
-  //       Text(
-  //         title,
-  //         style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w300),
-  //       ),
-  //       Text(
-  //         value,
-  //         style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-  //       ),
-  //     ],
-  //   );
-  // }
 }

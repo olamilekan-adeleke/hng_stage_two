@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hng_stage_two/controller/app_state.dart';
+import 'package:hng_stage_two/controller/user_details_model.dart';
 
 import '../../shared/sizer_helper.dart';
 
 class HomeProfileNameWidget extends StatelessWidget {
-  const HomeProfileNameWidget({super.key});
+  final AppState appState;
+  const HomeProfileNameWidget(this.appState, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,36 +19,61 @@ class HomeProfileNameWidget extends StatelessWidget {
               child: Image.asset(
                 "assets/user.jpeg",
                 fit: BoxFit.fill,
-                height: 80,
-                width: 80,
+                height: 60,
+                width: 60,
               ),
             ),
             SizerHelper.horizontalSpace(),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  "Olamilekan Adeleke",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
-                Text(
-                  "@Kod_Enigma",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
-                ),
-              ],
+            StreamBuilder<UserDetailsModel>(
+              stream: appState.dataStream,
+              builder: (context, snapshot) {
+                final UserDetailsModel? data = snapshot.data;
+
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      data?.fullname ?? "N/A",
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      data?.fullname ?? "N/A",
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ],
         ),
         SizerHelper.verticalSpace(30),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizerHelper.horizontalSpace(double.infinity),
-            buildInfoWidget("Slack Username", "Kod-Enigma"),
-            SizerHelper.verticalSpace(),
-            buildInfoWidget("Github handle", "Olamilekan-adeleke"),
-          ],
-        ),
+        StreamBuilder<UserDetailsModel>(
+            stream: appState.dataStream,
+            builder: (context, snapshot) {
+              final UserDetailsModel? data = snapshot.data;
+
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizerHelper.horizontalSpace(double.infinity),
+                  buildInfoWidget(
+                    "Slack Username",
+                    data?.slackUsername ?? "N/A",
+                  ),
+                  SizerHelper.verticalSpace(),
+                  buildInfoWidget(
+                    "Github handle",
+                    data?.githubUsername ?? "N/a",
+                  ),
+                ],
+              );
+            }),
       ],
     );
   }
