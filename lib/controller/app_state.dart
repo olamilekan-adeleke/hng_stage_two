@@ -6,6 +6,7 @@ class AppState {
   final _controller = StreamController<UserDetailsModel>.broadcast();
   Stream<UserDetailsModel> get dataStream => _controller.stream;
   late UserDetailsModel? _data;
+  UserDetailsModel? get getData => _data;
 
   void init() {
     final UserDetailsModel newData = UserDetailsModel(

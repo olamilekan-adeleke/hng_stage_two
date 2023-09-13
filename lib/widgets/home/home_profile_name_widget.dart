@@ -40,7 +40,7 @@ class HomeProfileNameWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      data?.fullname ?? "N/A",
+                      data?.username ?? "N/A",
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w300,

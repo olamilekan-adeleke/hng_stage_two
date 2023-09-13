@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:hng_stage_two/controller/app_state.dart';
+import 'package:hng_stage_two/controller/user_details_model.dart';
 
 import '../shared/sizer_helper.dart';
 import '../widgets/update_cv/components.dart';
@@ -23,8 +24,16 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      //
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      // Auto fill the form
+      final UserDetailsModel? data = widget.appState.getData;
+      if (data == null) return;
+
+      fullnameController.text = data.fullname;
+      usernameController.text = data.username;
+      slackUsernameController.text = data.slackUsername;
+      githubUsernameController.text = data.githubUsername;
+      aboutController.text = data.about;
     });
     super.initState();
   }
@@ -56,43 +65,49 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
               ),
               SizerHelper.verticalSpace(40),
               CustomTextField(
+                controller: fullnameController,
                 title: "Fullname",
                 hintText: "Enter Name",
                 validator: (_) {},
+                onChanged: widget.appState.updateFullname,
               ),
               SizerHelper.verticalSpace(20),
               CustomTextField(
+                controller: usernameController,
                 title: "Username",
                 hintText: "Enter username",
                 validator: (_) {},
+                onChanged: widget.appState.updateUsername,
               ),
               SizerHelper.verticalSpace(20),
               CustomTextField(
+                controller: slackUsernameController,
                 title: "Slack Username",
                 hintText: "Enter your slack username",
                 validator: (_) {},
+                onChanged: widget.appState.updateSlackUsername,
               ),
               SizerHelper.verticalSpace(20),
               CustomTextField(
+                controller: githubUsernameController,
                 title: "Github Handle",
                 hintText: "Enter your github username",
                 validator: (_) {},
+                onChanged: widget.appState.updateGithubUsername,
               ),
               SizerHelper.verticalSpace(20),
               CustomTextField(
+                controller: aboutController,
                 title: "About",
                 hintText: "Enter About",
                 maxLine: 3,
                 validator: (_) {},
+                onChanged: widget.appState.updateAbout,
               ),
               SizerHelper.verticalSpace(40),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //   builder: (context) =>  UpdateProfileView(),
-                    // ));
-                  },
+                  onPressed: Navigator.of(context).pop,
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black87,
                     elevation: 0,

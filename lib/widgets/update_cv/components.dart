@@ -5,6 +5,7 @@ class CustomTextField extends StatelessWidget {
   final String title;
   final String hintText;
   final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
   final TextEditingController? controller;
   final int? maxLine;
 
@@ -13,6 +14,7 @@ class CustomTextField extends StatelessWidget {
     required this.title,
     required this.hintText,
     this.validator,
+    this.onChanged,
     this.controller,
     this.maxLine,
   });
@@ -61,6 +63,7 @@ class CustomTextField extends StatelessWidget {
               borderRadius: BorderRadius.circular(5.0),
             ),
           ),
+          onChanged: onChanged?.call,
         ),
       ],
     );
