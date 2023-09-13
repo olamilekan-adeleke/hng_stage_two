@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hng_stage_two/shared/sizer_helper.dart';
+import '../../shared/sizer_helper.dart';
 
 class CustomTextField extends StatelessWidget {
   final String title;

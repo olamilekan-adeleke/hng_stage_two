@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hng_stage_two/controller/app_state.dart';
-import 'package:hng_stage_two/controller/user_details_model.dart';
+import '../../controller/app_state.dart';
+import '../../controller/user_details_model.dart';
 
 import '../../shared/sizer_helper.dart';
 
