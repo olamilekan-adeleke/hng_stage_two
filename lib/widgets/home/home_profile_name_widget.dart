@@ -69,7 +69,7 @@ class HomeProfileNameWidget extends StatelessWidget {
                   SizerHelper.verticalSpace(),
                   buildInfoWidget(
                     "Github handle",
-                    data?.githubUsername ?? "N/a",
+                    data?.githubUsername ?? "N/A",
                   ),
                 ],
               );

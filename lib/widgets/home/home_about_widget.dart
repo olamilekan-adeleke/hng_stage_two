@@ -18,7 +18,7 @@ class HomeAboutWidget extends StatelessWidget {
           builder: (context, snapshot) {
             final UserDetailsModel? data = snapshot.data;
 
-            return buildInfoWidget("About", data?.about ?? "");
+            return buildInfoWidget("About", data?.about ?? "N/A");
           },
         ),
       ],
