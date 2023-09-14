@@ -54,26 +54,27 @@ class HomeProfileNameWidget extends StatelessWidget {
         ),
         SizerHelper.verticalSpace(30),
         StreamBuilder<UserDetailsModel>(
-            stream: appState.dataStream,
-            builder: (context, snapshot) {
-              final UserDetailsModel? data = snapshot.data;
+          stream: appState.dataStream,
+          builder: (context, snapshot) {
+            final UserDetailsModel? data = snapshot.data;
 
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizerHelper.horizontalSpace(double.infinity),
-                  buildInfoWidget(
-                    "Slack Username",
-                    data?.slackUsername ?? "N/A",
-                  ),
-                  SizerHelper.verticalSpace(),
-                  buildInfoWidget(
-                    "Github handle",
-                    data?.githubUsername ?? "N/A",
-                  ),
-                ],
-              );
-            }),
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizerHelper.horizontalSpace(double.infinity),
+                buildInfoWidget(
+                  "Slack Username",
+                  data?.slackUsername ?? "N/A",
+                ),
+                SizerHelper.verticalSpace(),
+                buildInfoWidget(
+                  "Github handle",
+                  data?.githubUsername ?? "N/A",
+                ),
+              ],
+            );
+          },
+        ),
       ],
     );
   }
