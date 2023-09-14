@@ -1,16 +1,16 @@
 # hng_stage_two
 
-A new Flutter project.
+HNG Stage two Task
 
-## Getting Started
+## How was it done
 
-This project is a starting point for a Flutter application.
+# State Management
+    I created a stream class that manage the and send it down to all the listener by using stream builder in my widget
+    No package was used to achieve this
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Simulator Screen Shot - iPhone 12 Pro - 2023-09-14 at 13 12 50](https://github.com/olamilekan-adeleke/hng_stage_two/assets/64818550/84a50010-f555-49d4-bf1c-80eeba6d396e)
+
+
+![Simulator Screen Shot - iPhone 12 Pro - 2023-09-14 at 13 12 53](https://github.com/olamilekan-adeleke/hng_stage_two/assets/64818550/a7f45fe6-3bca-42d8-968c-a0d37518cdb0)
